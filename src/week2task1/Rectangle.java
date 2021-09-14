@@ -4,6 +4,12 @@ public class Rectangle extends Shape{
     private double a;
     private double b;
 
+    public Rectangle(){
+        this(0, 0);
+    }
+    public Rectangle(double a){
+        this(a, 0);
+    }
     public Rectangle(double a, double b){
         this.a = a;
         this.b = b;

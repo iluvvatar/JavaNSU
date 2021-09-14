@@ -3,6 +3,9 @@ package week2task1;
 public class Circle extends Shape{
     private double radius;
 
+    public Circle(){
+        this(0);
+    }
     public Circle(double radius){
         this.radius = radius;
     }

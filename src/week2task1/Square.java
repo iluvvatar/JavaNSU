@@ -3,6 +3,9 @@ package week2task1;
 public class Square extends Shape {
     private double side;
 
+    public Square(){
+        this(0);
+    }
     public Square(float side){
         this.side = side;
     }
