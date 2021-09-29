@@ -1,6 +1,6 @@
 package week2task2;
 
-public class Task2 {
+public class Main {
     public static void main(String[] args) {
         Student student1 = new Student(1, "Ilya", "Malakhov", 0, 4.9);
         Student student2 = new Student(2, "Napoleon", "Bonaparte", 40, 4.8);

@@ -1,6 +1,6 @@
 package week2task1;
 
-public class Task1 {
+public class Main {
     public static void main(String[] args) {
 
         // Circle
