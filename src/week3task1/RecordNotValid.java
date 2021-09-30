@@ -1,7 +1,7 @@
 package week3task1;
 
-public class RecordNotValid extends Exception{
-    public RecordNotValid(String msg){
+public class RecordNotValid extends Exception {
+    public RecordNotValid(String msg) {
         super(msg);
     }
 }

@@ -14,46 +14,49 @@ public class Main {
         records.add(new Record(3, "+7 913 913-13-15", "Siri"));
 
         // createRecord
-        for(Record rec : records){
+        for (Record rec : records) {
             try {
                 book.createRecord(rec);
-            }
-            catch (PhoneNumberAlreadyExists e){
-                System.out.println("Phone " + rec.getPhoneNumber() + " already exists.");
+                System.out.print("Record has been added successfully: ");
+                rec.print();
+            } catch (PhoneNumberAlreadyExists e) {
+                System.out.println(e);
             }
         }
         book.print();
+        System.out.println();
 
         // updateRecord
         ArrayList<Record> records_upd = new ArrayList<>();
         records_upd.add(new Record(2, "+7 987 654-32-10", "Oleg"));
-        records_upd.add(new Record(2, "", ""));
+        records_upd.add(new Record(2, "", null));
         records_upd.add(new Record(4, "+7 987 654-32-10", "Oleg"));
-        for(Record rec : records_upd){
+        for (Record rec : records_upd) {
             try {
                 book.updateRecord(rec);
-            }
-            catch (RecordNotFound e){
-                System.out.println("Record with id " + rec.getId() + " not found.");
-            }
-            catch (RecordNotValid e){
-                System.out.println("Record has empty name or phone. name='" + rec.getName() + "' phone='" + rec.getPhoneNumber() + "'.");
+                System.out.print("Record has been updated successfully: ");
+                rec.print();
+            } catch (RecordNotFound | RecordNotValid e) {
+                System.out.println(e);
             }
         }
         book.print();
+        System.out.println();
 
         // deleteRecord
-        ArrayList <Long> ids_del = new ArrayList<>();
-        ids_del.add((long)1);
-        ids_del.add((long)5);
-        for(long id : ids_del) {
+        ArrayList<Long> ids_del = new ArrayList<>();
+        ids_del.add((long) 1);
+        ids_del.add((long) 5);
+        for (long id : ids_del) {
             try {
-                book.deleteRecord(1);
-                book.deleteRecord(5);
+                Record rec = book.deleteRecord(id);
+                System.out.print("Record has been deleted successfully: ");
+                rec.print();
             } catch (RecordNotFound e) {
-                System.out.println("Record with id " + id + " not found.");
+                System.out.println(e);
             }
         }
         book.print();
+        System.out.println();
     }
 }
