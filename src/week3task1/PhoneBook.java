@@ -22,7 +22,7 @@ public class PhoneBook {
         }
     }
 
-    public void updateRecord(Record record) throws RecordNotValid, RecordNotFound {
+    public void updateRecord(Record record) throws RecordNotValid {
         if (record.getName() == null || record.getPhoneNumber() == null
                 || record.getName().isEmpty() || record.getPhoneNumber().isEmpty()) {
             throw new RecordNotValid("Record has unfilled name or phone. name=" + record.getName() + " phone=" + record.getPhoneNumber());
@@ -35,7 +35,7 @@ public class PhoneBook {
         }
     }
 
-    public Record deleteRecord(long id) throws RecordNotFound {
+    public Record deleteRecord(long id) {
         int i = this.findRecordById(id);
         if (i == -1) {
             throw new RecordNotFound("Record with id=" + id + " not found");
