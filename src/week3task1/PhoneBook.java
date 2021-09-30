@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneBook {
-    private List<Record> records;
+    private final List<Record> records;
 
     public PhoneBook(){
         this.records = new ArrayList<>();
@@ -16,7 +16,7 @@ public class PhoneBook {
 
     public void createRecord(Record record) throws PhoneNumberAlreadyExists {
         if(this.containsPhoneNumber(record.getPhoneNumber())){
-            throw new PhoneNumberAlreadyExists();
+            throw new PhoneNumberAlreadyExists("Phone number " + record.getPhoneNumber() + " already exists.");
         }
         else{
             this.records.add(record);
@@ -25,11 +25,11 @@ public class PhoneBook {
 
     public void updateRecord(Record record) throws RecordNotValid, RecordNotFound {
         if (record.getName().isEmpty() || record.getPhoneNumber().isEmpty()){
-            throw new RecordNotValid();
+            throw new RecordNotValid("Record has empty name or phone. name='" + record.getName() + "' phone='" + record.getPhoneNumber() + "'.");
         }
         int i = this.findRecordById(record.getId());
         if(i == -1){
-            throw new RecordNotFound();
+            throw new RecordNotFound("Record with id=" + record.getId() + " not found");
         }
         else{
             this.records.set(i, record);
@@ -39,7 +39,7 @@ public class PhoneBook {
     public void deleteRecord(long id) throws RecordNotFound{
         int i = this.findRecordById(id);
         if(i == -1){
-            throw new RecordNotFound();
+            throw new RecordNotFound("Record with id=" + id + " not found");
         }
         else{
             this.records.remove(i);
