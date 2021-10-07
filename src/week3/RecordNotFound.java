@@ -1,4 +1,4 @@
-package week3task1;
+package week3;
 
 public class RecordNotFound extends RuntimeException {
     public RecordNotFound(String msg) {

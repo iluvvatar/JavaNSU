@@ -1,4 +1,4 @@
-package week2task2;
+package week2_2;
 
 public class Student {
     private int number;

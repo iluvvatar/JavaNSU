@@ -1,4 +1,4 @@
-package week2task1;
+package week2_1;
 
 public class Circle extends Shape{
     private double radius;

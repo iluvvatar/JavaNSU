@@ -1,4 +1,4 @@
-package week2task2;
+package week2_2;
 
 import java.util.*;
 import java.util.stream.Collectors;
