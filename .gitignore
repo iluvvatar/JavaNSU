@@ -1,5 +1,6 @@
 # Project exclude paths
 /out/
-/src/test/
+/test/
 .idea/
-JavaNSU.iml
+*.iml
+target/
