@@ -1,3 +1,5 @@
+package app;
+
 public class Currency {
     private int numCode;
     private String code;
