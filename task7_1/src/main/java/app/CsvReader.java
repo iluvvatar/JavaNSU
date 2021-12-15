@@ -27,7 +27,6 @@ public class CsvReader {
                 student.setLastName(values[0]);
                 student.setBirthdayDate(dateFormat.parse(values[3]));
                 students.add(student);
-                System.out.println("readStudents " + student.getGroup());
             }
         }
         catch (IOException | ParseException e){

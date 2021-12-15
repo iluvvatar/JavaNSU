@@ -1,7 +1,8 @@
-package app.entities;
+package task7.ui.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,10 +40,10 @@ public class Student {
     @Getter
     @Setter
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthdayDate;
 
     public String toString() {
         return lastName + " " + firstName + " " + secondName + " " + birthdayDate;
     }
 }
-

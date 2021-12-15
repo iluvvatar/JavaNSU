@@ -1,4 +1,4 @@
-package app.entities;
+package task7.ui.entities;
 
 import javax.validation.constraints.NotNull;
 import lombok.Getter;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Добавить студента</title>
+</head>
+<body>
+<h1 layout:fragment="header">Добавить студента</h1>
+<div layout:fragment="content" class="container">
+    <div class="pull-right">
+        <a th:href="@{/}">
+            Списки групп
+        </a>
+    </div>
+    <form id="studentForm" th:action="@{/add}" method="post">
+<!--        <div th:if="${#fields.hasErrors('*')}" class="alert alert-error">-->
+<!--            <p th:each="error : ${#fields.errors('*')}" th:text="${error}">-->
+<!--                Validation error-->
+<!--            </p>-->
+<!--        </div>-->
+        <label for="lastName">Фамилия</label>
+        <input type="text" name="lastName"
+               th:value="${student.lastName}"/>
+        <label for="firstName">Имя</label>
+        <input type="text" name="firstName"
+               th:value="${student.firstName}"/>
+        <label for="secondName">Отчество</label>
+        <input type="text" name="secondName"
+               th:value="${student.secondName}"/>
+        <label for="birthdayDate">Дата рождения</label>
+        <input type="date" name="birthdayDate"
+               th:value="${student.birthdayDate}"/>
+        <label for="groupName">Группа</label>
+        <input type="text" name="name"
+               th:value="${group.name}"/>
+<!--        <label for="groupName">Группа</label>-->
+<!--        <input type="text"-->
+<!--               th:field="*{student.name}"-->
+<!--               th:class="${#fields.hasErrors('name')} ? 'field-error'"/>-->
+        <input type="submit" value="Добавить"/>
+    </form>
+</div>
+</body>
+</html>
