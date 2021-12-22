@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Статистика</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            let sortedCategories = [[${sortedCategories}]];
+            let spendingsByCategories = [[${spendingsByCategories}]];
+            let chartShares = [];
+            chartShares.push(['Название категории', 'Траты']);
+            for (category of sortedCategories) {
+                if (category['categoryName'] in spendingsByCategories) {
+                    chartShares.push([
+                        category['categoryName'],
+                        spendingsByCategories[category['categoryName']]
+                    ])
+                }
+            }
+
+            // var data = google.visualization.arrayToDataTable(chartShares);
+            let data = google.visualization.arrayToDataTable(chartShares);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const period = urlParams.get('period');
+            console.log(period);
+            let title;
+            if (period == null || period == 'day') {
+                title = 'Траты за день';
+            } else if (period == 'week') {
+                title = 'Траты за неделю';
+            } else if (period == 'month') {
+                title = 'Траты за месяц';
+            }
+            let options = {
+                title: title
+            };
+
+            let chart = new google.visualization.PieChart(document.getElementById('chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+
+</head>
+<body>
+<div layout:fragment="title"><h1>Статистика</h1></div>
+
+<div layout:fragment="content">
+    <a href="/stats?period=day">
+        <button>День</button>
+    </a>
+    <a href="/stats?period=week">
+        <button>Неделя</button>
+    </a>
+    <a href="/stats?period=month">
+        <button>Месяц</button>
+    </a>
+
+    <div id="chart"></div>
+
+    <div class="spendings_details">
+        <div class="total_spendings">
+            <div class="spendings_item">
+                <h2>Всего</h2>
+                <h2 th:text="${totalSpendings + ' руб.'}"></h2>
+            </div>
+        </div>
+        <div class="spendings_list">
+            <div th:each="category : ${sortedCategories}">
+                <div th:if="${spendingsByCategories.containsKey(category)}" class="spendings_item">
+                    <p th:text="${category.categoryName}"></p>
+                    <p th:text="${spendingsByCategories.get(category) + ' руб.'}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

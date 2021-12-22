@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <title>Layout</title>
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}"
+          href="../static/css/styles.css"/>
+</head>
+<body>
+<div class="header_bg">
+    <div class="container">
+        <div class="header">
+        <div layout:fragment="title" class="title">
+            <h1>Default title</h1>
+        </div>
+        <div class="navbar">
+            <a href="/add">
+                <button>Добавить транзакцию</button>
+            </a>
+            <a href="/">
+                <button>Транзации</button>
+            </a>
+            <a href="/stats">
+                <button>Статистика</button>
+            </a>
+            <h1 layout:fragment="header"></h1>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div layout:fragment="content" class="content">Content</div>
+</div>
+</body>
+</html>

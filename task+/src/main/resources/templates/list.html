@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Список транзакций</title>
+</head>
+<body>
+<div class="wrapper">
+    <div layout:fragment="title"><h1>Список транзакций</h1></div>
+    <div layout:fragment="content">
+        <p th:if="${sortedDates.isEmpty()}" class="empty_history">История транзакций пуста :(</p>
+        <div th:each="date : ${sortedDates}">
+            <div class="date_header">
+                <p th:text="${date}"></p>
+                <p th:if="${sumsByDates.get(date) > 0}"
+                    th:text="${'+' + sumsByDates.get(date)} + ' руб.'"></p>
+                <p th:if="${sumsByDates.get(date) <= 0}"
+                    th:text="${sumsByDates.get(date)} + ' руб.'"></p>
+            </div>
+            <div th:each="category : ${sortedCategories}">
+                <table th:if="${transactionsByDatesAndCategories.get(date).containsKey(category)}">
+                    <thead>
+                    <tr>
+                        <td th:text="${category.categoryName}"></td>
+                        <td th:if="${sumsByDatesAndCategories.get(date).get(category) > 0}"
+                            th:text="${'+' + sumsByDatesAndCategories.get(date).get(category)} + ' руб.'"
+                            class="float_right"></td>
+                        <td th:if="${sumsByDatesAndCategories.get(date).get(category) <= 0}"
+                            th:text="${sumsByDatesAndCategories.get(date).get(category)} + ' руб.'"
+                        class="float_right"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="transaction : ${transactionsByDatesAndCategories.get(date).get(category)}">
+                        <td class="transaction_name" th:text="${transaction.getFirst()}"></td>
+                        <td th:if="${transaction.getSecond() > 0}"
+                            th:text="${'+' + transaction.getSecond()} + ' руб.'"
+                            class="float_right"></td>
+                        <td th:if="${transaction.getSecond() <= 0}"
+                            th:text="${transaction.getSecond()} + ' руб.'"
+                            class="float_right"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
