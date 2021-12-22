@@ -89,7 +89,6 @@ public class StatsService {
         LocalDate dateTo = LocalDate.now();
         LocalDate dateFrom = switch (period) {
             case ("day"):
-                // TODO: there should be shorter way to set time to 00:00:00
                 yield dateTo;
             case ("week"):
                 yield dateTo.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
