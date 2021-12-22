@@ -59,8 +59,6 @@ public class TransactionsController {
                             BindingResult result,
                             RedirectAttributes redirect) {
         LocalDate today = LocalDate.now();
-        System.out.println(category);
-        System.out.println(transaction);
         if (transaction.getDate().isAfter(today)){
             result.addError(new FieldError("transaction", "date", "Дата должна быть не больше текущей"));
         }
