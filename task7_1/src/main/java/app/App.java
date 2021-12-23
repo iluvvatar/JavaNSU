@@ -30,14 +30,16 @@ public class App {
 
             Group group = new Group();
             group.setName(file.getName().split("\\.")[0]);
+//            Group dbGroup = GroupRepository.
             GroupRepository.save(group);
 
             ArrayList<Student> students = CsvReader.readStudents(file, group);
             StudentRepository.saveAll(students);
 
-            System.out.println(group);
-            System.out.println(group.getStudents());
-            System.out.println(students.get(0));
+//            System.out.println(group);
+//            System.out.println(group.getStudents());
+//            System.out.println(students.get(0));
+            System.out.println("Successful - group " + group.getName() + " created");
         }
     }
 

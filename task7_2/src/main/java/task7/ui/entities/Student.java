@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -25,22 +26,26 @@ public class Student {
 
     @Getter
     @Setter
-    @NotNull
+    @NotBlank
+    @Column(name = "first_name")
     private String firstName;
 
     @Getter
     @Setter
+    @Column(name = "second_name")
     private String secondName;
 
     @Getter
     @Setter
-    @NotNull
+    @NotBlank
+    @Column(name = "last_name")
     private String lastName;
 
     @Getter
     @Setter
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "birthday_name")
     private Date birthdayDate;
 
     public String toString() {

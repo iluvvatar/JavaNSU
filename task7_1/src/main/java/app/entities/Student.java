@@ -25,24 +25,27 @@ public class Student {
     @Getter
     @Setter
     @NotNull
+    @Column(name = "first_name")
     private String firstName;
 
     @Getter
     @Setter
+    @Column(name = "second_name")
     private String secondName;
 
     @Getter
     @Setter
     @NotNull
+    @Column(name = "last_name")
     private String lastName;
 
     @Getter
     @Setter
     @NotNull
+    @Column(name = "birthday_name")
     private Date birthdayDate;
 
     public String toString() {
         return lastName + " " + firstName + " " + secondName + " " + birthdayDate;
     }
 }
-

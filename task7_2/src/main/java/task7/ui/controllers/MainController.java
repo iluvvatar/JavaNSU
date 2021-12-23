@@ -55,20 +55,16 @@ public class MainController {
 	}
 
 	@PostMapping("/add")
-	public ModelAndView postAdd(@ModelAttribute(value="group") @Valid Group group,
-								BindingResult resultGroup,
-								@ModelAttribute(value="student") @Valid Student student,
-								BindingResult resultStudent,
+	public ModelAndView postAdd(@Valid Group group,
+								@Valid Student student,
+								BindingResult result,
 								RedirectAttributes redirect) {
-		System.out.println(student);
-		System.out.println(group);
-		System.out.println(group.getName());
-		if (resultGroup.hasErrors() || resultStudent.hasErrors()) {
+		if (student.getFirstName().isEmpty()){
 			return new ModelAndView("add");
-//			return new ModelAndView("add", "groupErrors", resultGroup.getAllErrors());
 		}
-		if (resultStudent.hasErrors()) {
-			return new ModelAndView("add", "studentErrors", resultStudent.getAllErrors());
+
+		if (result.hasErrors()) {
+			return new ModelAndView("add");
 		}
 
 		Group dbGroup = groupRepository.findByName(group.getName()).orElse(null);

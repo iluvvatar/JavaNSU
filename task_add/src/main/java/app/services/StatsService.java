@@ -21,12 +21,9 @@ import java.util.stream.Collectors;
 public class StatsService {
 
     private final TransactionsRepository transactionsRepository;
-    private final CategoriesRepository categoriesRepository;
 
-    public StatsService(TransactionsRepository transactionsRepository,
-                        CategoriesRepository categoryRepository) {
+    public StatsService(TransactionsRepository transactionsRepository) {
         this.transactionsRepository = transactionsRepository;
-        this.categoriesRepository = categoryRepository;
     }
 
     public List<LocalDate> getSortedDatesList() {

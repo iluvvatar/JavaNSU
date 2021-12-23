@@ -71,7 +71,6 @@ public class StatsController {
 
         List<Category> sortedCategories = TransactionsService.getCategories();
         HashMap<Category, Integer> spendingsByCategories = statsService.getSpendingByCategoriesForPeriod(sortedCategories, period);
-//        HashMap<>
         Integer totalSpendings = 0;
         for (Category category : sortedCategories){
             if (spendingsByCategories.containsKey(category)) {

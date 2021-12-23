@@ -5,8 +5,8 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/nsu_java_task7_1</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/nsu_java_task7</property>
+        <property name="hibernate.connection.username">ilya</property>
         <property name="hibernate.connection.password">l12345</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 

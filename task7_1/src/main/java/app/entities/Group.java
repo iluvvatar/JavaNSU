@@ -1,5 +1,6 @@
 package app.entities;
 
+
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class Group {
     @Getter
     @Setter
     @NotNull
-    @Column(unique = true)
+    @Column(name = "name", unique = true)
     private String name;
 
     @Getter

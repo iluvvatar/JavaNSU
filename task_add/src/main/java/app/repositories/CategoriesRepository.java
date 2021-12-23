@@ -17,5 +17,5 @@ public interface CategoriesRepository extends CrudRepository<Category, Integer> 
     @Transactional
     @Modifying
     @Query(value = "insert ignore into `categories` (`name`) values (:categoryName)", nativeQuery = true)
-    void insertIgnore(@Param("groupName") String categoryName);
+    void insertIgnore(@Param("categoryName") String categoryName);
 }
